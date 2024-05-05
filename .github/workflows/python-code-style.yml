@@ -16,4 +16,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pylint
       - name: Check code with Pylint
-        run: pylint **/*.py
+        run: |
+          files=$(find . -name '*.py')
+          if [ -n "$files" ]; then
+            echo "Running Pylint..."
+            echo "$files" | xargs pylint
+          else
+            echo "No Python files to lint."
+          fi
