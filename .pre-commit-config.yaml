@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1  # 사용할 버전
+    hooks:
+      - id: trailing-whitespace
+      - id: check-yaml
+      - id: end-of-file-fixer
+
+  - repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: v1.5.7  # autopep8 버전
+    hooks:
+      - id: autopep8
+        args: ['--in-place', '--aggressive', '--aggressive']
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args: ['--errors-only']
